@@ -44,10 +44,12 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	var APP = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components/APP\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	'use strict';
 
-	React.render(APP, document.getElementById('react-container'));
+	var React = __webpack_require__(1);
+	var APP = __webpack_require__(157);
+
+	React.render(React.createElement(APP, null), document.getElementById('react-container'));
 
 /***/ },
 /* 1 */
@@ -20424,6 +20426,28 @@
 	module.exports = onlyChild;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 157 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var APP = React.createClass({
+	    displayName: 'APP',
+
+	    render: function render() {
+	        return React.createElement(
+	            'h1',
+	            null,
+	            'Hello World form React'
+	        );
+	    }
+	});
+
+	module.exports = APP;
 
 /***/ }
 /******/ ]);
