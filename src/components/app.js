@@ -9,7 +9,8 @@ var App = React.createClass({
     getInitialState(){
         return {
             status: 'disconnected',
-            title: ''
+            title: '',
+            owner: 'Panduro'
         }
     },
     //Fires before mount the App component
@@ -37,7 +38,7 @@ var App = React.createClass({
             <div>
                 <Header title={this.state.title} />
                 <div>
-                    {React.cloneElement(this.props.children, {status: this.state.status, title: this.state.title})}
+                    {React.cloneElement(this.props.children, this.state)}
                 </div>
             </div>
         );
