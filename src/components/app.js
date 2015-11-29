@@ -20,6 +20,9 @@ var App = React.createClass({
         this.socket.on('disconnect', this.disconnect);
         this.socket.on('welcome', this.welcome)
     },
+    emit(eventName, payload){
+        this.socket.emit(eventName, payload);
+    },
     connect(){
         this.setState({status: 'connected'});
     },
@@ -30,9 +33,9 @@ var App = React.createClass({
     welcome(serverState){
         //Set the State that comes from the server
         this.setState({title: serverState.title});
+        this.setState({emit: this.emit});
     },
     render(){
-        console.log("Props: ", this.state.status, this.state.title);
         //Render the title state in the Header component
         return (
             <div>

@@ -16,6 +16,10 @@ io.sockets.on('connection', function(socket){
         socket.disconnect();
         console.log("Disconnected: %s sockets remaining.", connections.length);
     });
+    
+    socket.on('join', function(payload){
+        console.log('Audience joined %s', payload.name);
+    });
 
     socket.emit('welcome', {
         title: title
