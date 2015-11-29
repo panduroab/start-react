@@ -10,7 +10,8 @@ var App = React.createClass({
         return {
             status: 'disconnected',
             title: '',
-            owner: 'Panduro'
+            member: {},
+            audience: []
         }
     },
     //Fires before mount the App component
@@ -18,7 +19,9 @@ var App = React.createClass({
         this.socket = io('http://localhost:3000');
         this.socket.on('connect', this.connect);
         this.socket.on('disconnect', this.disconnect);
-        this.socket.on('welcome', this.welcome)
+        this.socket.on('welcome', this.welcome);
+        this.socket.on('joined', this.joined);
+        this.socket.on('audience', this.updateAudience);
     },
     emit(eventName, payload){
         this.socket.emit(eventName, payload);
@@ -34,6 +37,12 @@ var App = React.createClass({
         //Set the State that comes from the server
         this.setState({title: serverState.title});
         this.setState({emit: this.emit});
+    },
+    joined(member){
+        this.setState({member: member});
+    },
+    updateAudience(newAudience){
+        this.setState({audience: newAudience});
     },
     render(){
         //Render the title state in the Header component
