@@ -27,6 +27,10 @@ var App = React.createClass({
         this.socket.emit(eventName, payload);
     },
     connect(){
+        var member = (sessionStorage.member) ? JSON.parse(sessionStorage.member) : true;
+        if(member){
+            this.emit('join', member);
+        }
         this.setState({status: 'connected'});
     },
     disconnect(){
@@ -39,6 +43,8 @@ var App = React.createClass({
         this.setState({emit: this.emit});
     },
     joined(member){
+console.log("Member: ", member);
+        sessionStorage.member = JSON.stringify(member);
         this.setState({member: member});
     },
     updateAudience(newAudience){

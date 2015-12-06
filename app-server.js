@@ -26,6 +26,9 @@ io.sockets.on('connection', function(socket){
     });
     
     socket.on('join', function(payload){
+        if(!payload.name){
+            return;
+        }
         var newMember = {
             id: this.id,
             name: payload.name
