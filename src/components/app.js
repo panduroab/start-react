@@ -11,7 +11,8 @@ var App = React.createClass({
             status: 'disconnected',
             title: '',
             member: {},
-            audience: []
+            audience: [],
+            speaker: {}
         }
     },
     //Fires before mount the App component
@@ -43,7 +44,7 @@ var App = React.createClass({
         this.setState({emit: this.emit});
     },
     joined(member){
-console.log("Member: ", member);
+        console.log("Member: ", member);
         sessionStorage.member = JSON.stringify(member);
         this.setState({member: member});
     },
